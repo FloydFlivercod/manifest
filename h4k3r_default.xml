@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <remote  name="H4K3ROM"
+           fetch="https://github.com/"
+           review="gerrit.H4K3ROM-rom.com"
+           revision="refs/heads/p9.0" />
+
+  <remote  name="lineage"
+           fetch="https://github.com/LineageOS"
+           review="review.lineageos.org"
+           revision="refs/heads/lineage-16.0" />
+
+  <remote  name="omni"
+           fetch="https://github.com/omnirom"
+           review="gerrit.omnirom.org"
+           revision="refs/heads/android-9.0" />
+
+  <!-- Remove unused projects -->
+  <remove-project name="manifest" />
+  <remove-project name="bionic" />
+  <remove-project name="build" />
+  <remove-project name="build_soong" />
+  <remove-project name="device_gzosp_sepolicy" />
+  <remove-project name="device_qcom_sepolicy" />
+  <remove-project name="frameworks_av" />
+  <remove-project name="frameworks_base" />
+  <remove-project name="frameworks_native" />
+  <remove-project name="hardware_interfaces" />
+  <remove-project name="packages_apps_Dialer" />
+  <remove-project name="packages_apps_Settings" />
+  <remove-project name="platform/packages/services/Telephony" />
+  <remove-project name="system_core" />
+  <remove-project name="vendor_gzosp" />
+
+
+  <!-- H4K3ROM repositories -->
+  <project path="platform_manifest" name="H4K3ROM/platform_manifest" remote="H4K3ROM" />
+  <project path="build/make" name="H4K3ROM/build" remote="H4K3ROM" groups="pdk" >
+    <copyfile src="core/root.mk" dest="Makefile" />
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+  <project path="build/soong" name="H4K3ROM/build_soong"  remote="H4K3ROM" >
+    <linkfile src="root.bp" dest="Android.bp" />
+    <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+  </project>
+  <project path="bionic" name="H4K3ROM/bionic" remote="H4K3ROM" />
+  <project path="device/hkr/sepolicy" name="H4K3ROM/device_hkr_sepolicy" remote="H4K3ROM" />
+  <project path="device/qcom/sepolicy" name="H4K3ROM/device_qcom_sepolicy" remote="H4K3ROM" />
+  <project path="device/qcom/sepolicy-legacy" name="H4K3ROM/device_qcom_sepolicy-legacy" remote="H4K3ROM" />
+  <project path="frameworks/av" name="H4K3ROM/frameworks_av" remote="H4K3ROM" groups="pdk" />
+  <project path="frameworks/base" name="H4K3ROM/frameworks_base" remote="H4K3ROM" groups="pdk-cw-fs,pdk-fs" />
+  <project path="frameworks/native" name="H4K3ROM/frameworks_native" remote="H4K3ROM" groups="pdk" />
+  <project path="frameworks/opt/hkrgear" name="H4K3ROM/frameworks_opt_hkrgear" remote="H4K3ROM" />
+  <project path="hardware/interfaces" name="H4K3ROM/hardware_interfaces" groups="pdk" remote="H4K3ROM" />
+  <project path="packages/apps/hkr_OTA" name="H4K3ROM/packages_apps_hkr_OTA" remote="H4K3ROM" />
+  <project path="packages/apps/hkrExtras" name="H4K3ROM/packages_apps_hkrExtras" remote="H4K3ROM" />
+  <project path="packages/apps/Dialer" name="H4K3ROM/packages_apps_Dialer" remote="H4K3ROM" />
+  <project path="packages/apps/Settings" name="H4K3ROM/packages_apps_Settings" remote="H4K3ROM" groups="pdk-fs" />
+  <project path="packages/apps/SnapdragonCamera" name="H4K3ROM/packages_apps_SnapdragonCamera" remote="H4K3ROM" />
+  <project path="packages/overlays/hkr" name="H4K3ROM/packages_overlays_H4K3ROM" remote="H4K3ROM" />
+  <project path="packages/services/Telephony" name="H4K3ROM/packages_services_Telephony" remote="H4K3ROM" />
+  <project path="system/core" name="H4K3ROM/system_core" remote="H4K3ROM" groups="pdk" />
+  <project path="vendor/hkr" name="H4K3ROM/vendor_hkr" remote="H4K3ROM" />
+
+  <!-- Lineage repositories -->
+  <project path="packages/apps/Jelly" name="android_packages_apps_Jelly" remote="lineage" />
+
+  <!-- Omni repositories -->
+  <project path="packages/apps/Phonograph" name="android_packages_apps_Phonograph" remote="omni" />
+
+</manifest>
